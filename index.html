@@ -43,11 +43,13 @@
       transition: background 0.6s ease, box-shadow 0.6s ease, backdrop-filter 0.6s ease, border-radius 0.6s ease, top 0.6s ease, padding 0.6s ease;
     }
     nav.scrolled {
-      background: rgba(255,255,255,0.97);
-      backdrop-filter: blur(12px);
+      background: rgba(255,255,255,0.55);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
       border-bottom: none;
-      box-shadow: 0 4px 30px rgba(0,0,0,0.12), 0 1px 8px rgba(0,0,0,0.06);
-      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.5);
+      box-shadow: 0 4px 30px rgba(0,0,0,0.08), 0 1px 8px rgba(0,0,0,0.04);
+      border-radius: 14px;
       top: 0.6rem;
       padding: 0.9rem 2.5rem;
     }
@@ -66,6 +68,7 @@
     .nav-cta:hover { background: var(--green-dark) !important; color: white !important; }
     .nav-phone { color: rgba(255,255,255,0.9) !important; font-weight: 500 !important; }
     nav.scrolled .nav-phone { color: var(--navy) !important; }
+    nav.scrolled .hamburger span { background: var(--navy); }
 
     /* ── HERO ── */
     .hero {
@@ -696,32 +699,47 @@
     }
 
     /* ── FAQ ── */
-    .faq-section { background: white; padding: 6rem 2.5rem; }
+    .faq-section { background: var(--off-white); padding: 6rem 2.5rem; }
     .faq-inner { max-width: 800px; margin: 0 auto; }
-    .faq-grid { display: flex; flex-direction: column; gap: 0; }
+    .faq-grid { display: flex; flex-direction: column; gap: 0.75rem; }
     .faq-item {
-      border-bottom: 1px solid #e2e8f0;
+      background: white;
+      border-radius: 12px;
+      border: 1px solid #e2e8f0;
+      overflow: hidden;
+      transition: box-shadow 0.2s, border-color 0.2s;
     }
-    .faq-item:first-child { border-top: 1px solid #e2e8f0; }
+    .faq-item:hover { box-shadow: 0 4px 16px rgba(5,39,51,0.07); border-color: #cbd5e1; }
+    .faq-item.open { border-color: var(--blue); box-shadow: 0 4px 20px rgba(16,123,160,0.1); }
     .faq-question {
       width: 100%; display: flex; align-items: center; justify-content: space-between;
-      gap: 1rem; padding: 1.3rem 0; background: none; border: none; cursor: pointer;
+      gap: 1rem; padding: 1.3rem 1.5rem; background: none; border: none; cursor: pointer;
       font-family: 'General Sans', 'Outfit', sans-serif; font-size: 1rem;
       font-weight: 600; color: var(--navy); text-align: left; transition: color 0.2s;
     }
     .faq-question:hover { color: var(--blue); }
     .faq-question.open { color: var(--blue); }
-    .faq-icon { flex-shrink: 0; transition: transform 0.3s; color: var(--muted); }
-    .faq-question.open .faq-icon { transform: rotate(180deg); color: var(--blue); }
+    .faq-icon {
+      flex-shrink: 0; transition: transform 0.3s; color: var(--muted);
+      background: var(--off-white); border-radius: 50%; padding: 3px;
+      width: 28px; height: 28px;
+    }
+    .faq-question.open .faq-icon { transform: rotate(180deg); color: var(--blue); background: #e8f4f8; }
     .faq-answer {
       max-height: 0; overflow: hidden;
       transition: max-height 0.35s ease, padding 0.35s ease;
+      border-top: 0px solid #e2e8f0;
     }
-    .faq-answer.open { max-height: 200px; padding-bottom: 1.2rem; }
-    .faq-answer p { color: var(--muted); line-height: 1.75; font-size: 0.95rem; }
+    .faq-answer.open {
+      max-height: 300px;
+      padding: 0 1.5rem 1.4rem;
+      border-top: 1px solid #e2e8f0;
+    }
+    .faq-answer p { color: var(--muted); line-height: 1.75; font-size: 0.95rem; margin-top: 1rem; }
     @media (max-width: 480px) {
       .faq-section { padding: 3rem 1rem; }
-      .faq-question { font-size: 0.93rem; }
+      .faq-question { font-size: 0.93rem; padding: 1.1rem 1.2rem; }
+      .faq-answer.open { padding: 0 1.2rem 1.2rem; }
     }
 
     .footer-social {
@@ -1160,27 +1178,24 @@
         </div>
       </div>
       <div class="contact-form-card">
-        <div class="contact-form-title">Send Us A Message</div>
+        <div class="contact-form-title">Get a Free Quote</div>
+        <p style="color:var(--muted);font-size:0.9rem;margin-bottom:1.5rem;margin-top:-0.5rem;">We'll call you back the same day. No obligation, no pressure.</p>
         <form id="contactForm" action="https://formspree.io/f/xeenzapk" method="POST">
-          <div class="form-row">
-            <div class="form-group"><label>First Name <span class="req">*</span></label><input type="text" name="firstName" required /></div>
-            <div class="form-group"><label>Last Name <span class="req">*</span></label><input type="text" name="lastName" required /></div>
-          </div>
-          <div class="form-row">
-            <div class="form-group"><label>Email <span class="req">*</span></label><input type="email" name="email" required /></div>
-            <div class="form-group"><label>Phone</label><input type="tel" name="phone" /></div>
-          </div>
-          <div class="form-group"><label>Service</label>
+          <div class="form-group"><label>First Name <span class="req">*</span></label><input type="text" name="firstName" placeholder="Your first name" required /></div>
+          <div class="form-group"><label>Phone Number <span class="req">*</span></label><input type="tel" name="phone" placeholder="+1 (520) 000-0000" required /></div>
+          <div class="form-group"><label>What can we help with?</label>
             <select name="service">
-              <option value="" disabled selected>- Choose Service -</option>
-              <option>Weekly Cleaning</option><option>Equipment Repair</option>
-              <option>Water Testing & Balancing</option><option>Green to Clean</option><option>Other</option>
+              <option value="" disabled selected>- Choose a service -</option>
+              <option>Weekly Cleaning</option>
+              <option>Equipment Repair</option>
+              <option>Water Testing & Balancing</option>
+              <option>Green to Clean</option>
+              <option>Other / Not Sure</option>
             </select>
           </div>
-          <div class="form-group"><label>Message <span class="req">*</span></label><textarea name="message" required></textarea></div>
-          <button type="submit" class="btn btn-primary btn-full">Send Message &rarr;</button>
-          <div class="form-success" id="formSuccess">&#10003; Thank you! We'll be in touch today.</div>
-          <div class="form-error" id="formError">Something went wrong. Please try again.</div>
+          <button type="submit" class="btn btn-primary btn-full">Get My Free Quote &rarr;</button>
+          <div class="form-success" id="formSuccess">&#10003; Thank you! Kevin will call you back today.</div>
+          <div class="form-error" id="formError">Something went wrong. Please try again or call us directly.</div>
         </form>
       </div>
     </div>
@@ -1416,11 +1431,13 @@
     document.querySelectorAll('.faq-question').forEach(q => {
       q.classList.remove('open');
       q.nextElementSibling.classList.remove('open');
+      q.closest('.faq-item').classList.remove('open');
     });
     // Open clicked if it was closed
     if (!isOpen) {
       btn.classList.add('open');
       answer.classList.add('open');
+      btn.closest('.faq-item').classList.add('open');
     }
   }
 
