@@ -362,7 +362,25 @@
     .footer-links a:hover { color: white; }
     .footer-copy { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1.5rem; font-size: 0.82rem; }
 
-    /* ── RESPONSIVE ── */
+    /* Green to Clean before/after */
+    .g2c-before-after { display: flex; flex-direction: row; gap: 0; overflow: hidden; }
+    .g2c-half { position: relative; flex: 1; overflow: hidden; }
+    .g2c-half:first-child { border-right: 2px solid rgba(255,255,255,0.3); }
+    .g2c-half .service-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .g2c-label {
+      position: absolute; bottom: 0.6rem; left: 50%; transform: translateX(-50%);
+      background: rgba(0,0,0,0.55); color: white;
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; padding: 0.25rem 0.6rem; border-radius: 20px;
+      backdrop-filter: blur(4px);
+    }
+    .g2c-label-after { background: rgba(16,123,160,0.75); }
+
+    @media (max-width: 480px) {
+      .g2c-before-after { flex-direction: column; }
+      .g2c-half:first-child { border-right: none; border-bottom: 2px solid rgba(255,255,255,0.3); }
+      .g2c-half .service-img { height: 140px; }
+    }
     /* ── TABLET (max 900px) ── */
     @media (max-width: 900px) {
       .service-card, .service-card.featured { grid-template-columns: 1fr !important; }
@@ -728,6 +746,14 @@
       .hero-form-card h3 { font-size: 1.2rem; }
     }
 </style>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8MDR0GD627"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-8MDR0GD627");
+  </script>
 </head>
 <body>
 
@@ -955,8 +981,15 @@
     </div>
 
     <div class="service-card featured">
-      <div class="service-img-wrap">
-        <img class="service-img" src="./cleaning.jpeg" alt="Green pool being treated and cleaned" loading="lazy" />
+      <div class="service-img-wrap g2c-before-after">
+        <div class="g2c-half">
+          <img class="service-img" src="./green-to-clean-before.jpeg" alt="Green algae-filled pool before treatment" loading="lazy" />
+          <span class="g2c-label">Before</span>
+        </div>
+        <div class="g2c-half">
+          <img class="service-img" src="./green-to-clean-after.jpeg" alt="Crystal clear pool after Green to Clean treatment" loading="lazy" />
+          <span class="g2c-label g2c-label-after">After</span>
+        </div>
       </div>
       <div class="service-body">
         <div class="service-tag">
