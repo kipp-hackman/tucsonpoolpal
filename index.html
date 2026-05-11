@@ -75,7 +75,7 @@
     .hero {
       position: relative; min-height: 85vh;
       display: flex; flex-direction: column;
-      justify-content: center;
+      justify-content: center; overflow: hidden;
       background-image: url('./hero.jpeg');
       background-size: cover; background-position: center 30%;
     }
@@ -322,19 +322,21 @@
     .contact-detail-value { color: var(--navy); font-size: 0.98rem; font-weight: 600; text-decoration: none; transition: color 0.2s; }
     a.contact-detail-value:hover { color: var(--blue); }
     .contact-form-card {
-      background: white; border-radius: 16px; padding: 2.8rem;
+      background: white; border-radius: 16px; padding: 2.2rem 2.5rem;
       box-shadow: 0 4px 30px rgba(0,0,0,0.07);
       border: 1px solid #e2e8f0;
+      box-sizing: border-box; overflow: hidden;
     }
     .contact-form-title { font-family: 'Plus Jakarta Sans', sans-serif; font-style: normal; font-size: 1.4rem; font-weight: 900; color: var(--navy); margin-bottom: 1.5rem; }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 1.2rem; }
-    .form-group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; min-width: 0; }
     .form-group label { font-size: 0.8rem; font-weight: 600; color: var(--blue); letter-spacing: 0.04em; }
     .req { color: var(--green); }
     .form-group input, .form-group textarea, .form-group select {
       border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 0.85rem 1rem;
       font-family: 'Inter', sans-serif; font-size: 0.95rem; color: var(--text);
-      background: white; outline: none; transition: border-color 0.2s; width: 100%;
+      background: white; outline: none; transition: border-color 0.2s;
+      width: 100%; box-sizing: border-box; min-width: 0;
     }
     .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
       border-color: var(--green); background: white;
@@ -421,16 +423,17 @@
     /* ── MOBILE (max 480px) ── */
     @media (max-width: 480px) {
       nav { padding: 0.9rem 1rem; left: 0; right: 0; border-radius: 0 !important; top: 0 !important; }
-      nav.scrolled { left: 0; right: 0; border-radius: 0 !important; top: 0 !important; }
+      nav.scrolled { left: 0; right: 0; border-radius: 0 !important; top: 0 !important; background: rgba(255,255,255,0.92) !important; }
       .nav-logo div { width: 140px; }
-      .hero-inner { padding: 5.5rem 1rem 2.5rem; }
+      .hero-inner { padding: 5.5rem 1rem 2rem; gap: 1.5rem; }
       .hero h1 { font-size: 2rem; line-height: 1.1; }
-      .hero-sub { font-size: 0.95rem; }
+      .hero-sub { display: none; }
       .hero-eyebrow { font-size: 0.68rem; }
-      .hero-trust { gap: 0.8rem; }
+      .hero-trust { display: none; }
+      .hero-urgency { display: none; }
       .hero-trust-item { font-size: 0.78rem; }
       .hero-phone-link { font-size: 1rem; }
-      .hero-form-card { padding: 1.5rem 1.2rem; }
+      .hero-form-card { padding: 1.5rem 1.2rem; width: 100%; box-sizing: border-box; overflow: hidden; }
       .hero-form-card h3 { font-size: 1.2rem; }
       .btn-hero { font-size: 0.9rem; padding: 0.85rem; }
       section { padding: 3rem 1rem; }
@@ -729,19 +732,19 @@
     .faq-question.open .faq-icon { transform: rotate(180deg); color: var(--blue); background: #e8f4f8; }
     .faq-answer {
       max-height: 0; overflow: hidden;
-      transition: max-height 0.35s ease, padding 0.35s ease;
+      transition: max-height 0.35s ease;
       border-top: 0px solid #e2e8f0;
     }
     .faq-answer.open {
       max-height: 300px;
-      padding: 0 1.5rem 1.4rem;
       border-top: 1px solid #e2e8f0;
     }
-    .faq-answer p { color: var(--muted); line-height: 1.75; font-size: 0.95rem; margin-top: 1rem; }
+    .faq-answer-inner { padding: 1rem 1.5rem 1.4rem; }
+    .faq-answer p { color: var(--muted); line-height: 1.75; font-size: 0.95rem; }
     @media (max-width: 480px) {
       .faq-section { padding: 3rem 1rem; }
       .faq-question { font-size: 0.93rem; padding: 1.1rem 1.2rem; }
-      .faq-answer.open { padding: 0 1.2rem 1.2rem; }
+      .faq-answer-inner { padding: 1rem 1.2rem 1.2rem; }
     }
 
     .footer-social {
@@ -1217,54 +1220,42 @@
           Do I need to be home during the visit?
           <svg class="faq-icon" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
-        <div class="faq-answer">
-          <p>Nope! Most of our customers aren't home when we visit. As long as we have access to your pool area, we'll take care of everything and leave a service note so you always know what was done.</p>
-        </div>
+        <div class="faq-answer"><div class="faq-answer-inner"><p>Nope! Most of our customers aren't home when we visit. As long as we have access to your pool area, we'll take care of everything and leave a service note so you always know what was done.</p></div></div>
       </div>
       <div class="faq-item">
         <button class="faq-question" onclick="toggleFaq(this)">
           How often do you come?
           <svg class="faq-icon" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
-        <div class="faq-answer">
-          <p>Our standard service is weekly, which is what we recommend for Tucson's climate. The heat and dust mean your pool needs consistent attention to stay clean and properly balanced.</p>
-        </div>
+        <div class="faq-answer"><div class="faq-answer-inner"><p>Our standard service is weekly, which is what we recommend for Tucson's climate. The heat and dust mean your pool needs consistent attention to stay clean and properly balanced.</p></div></div>
       </div>
       <div class="faq-item">
         <button class="faq-question" onclick="toggleFaq(this)">
           What's included in weekly service?
           <svg class="faq-icon" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
-        <div class="faq-answer">
-          <p>Every weekly visit includes skimming, vacuuming, brushing walls and steps, emptying baskets, and testing and balancing your water chemistry. We also do a visual check of your equipment and let you know if anything needs attention.</p>
-        </div>
+        <div class="faq-answer"><div class="faq-answer-inner"><p>Every weekly visit includes skimming, vacuuming, brushing walls and steps, emptying baskets, and testing and balancing your water chemistry. We also do a visual check of your equipment and let you know if anything needs attention.</p></div></div>
       </div>
       <div class="faq-item">
         <button class="faq-question" onclick="toggleFaq(this)">
           Do you require a contract?
           <svg class="faq-icon" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
-        <div class="faq-answer">
-          <p>No contracts, ever. We believe in earning your business every single week. If you're not happy with the service you can cancel anytime with no fees and no hassle.</p>
-        </div>
+        <div class="faq-answer"><div class="faq-answer-inner"><p>No contracts, ever. We believe in earning your business every single week. If you're not happy with the service you can cancel anytime with no fees and no hassle.</p></div></div>
       </div>
       <div class="faq-item">
         <button class="faq-question" onclick="toggleFaq(this)">
           How quickly can you start?
           <svg class="faq-icon" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
-        <div class="faq-answer">
-          <p>Usually within the same week! Get in touch today and we'll assess your pool, give you a free quote, and get you on the schedule as quickly as possible.</p>
-        </div>
+        <div class="faq-answer"><div class="faq-answer-inner"><p>Usually within the same week! Get in touch today and we'll assess your pool, give you a free quote, and get you on the schedule as quickly as possible.</p></div></div>
       </div>
       <div class="faq-item">
         <button class="faq-question" onclick="toggleFaq(this)">
           How much does it cost?
           <svg class="faq-icon" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
-        <div class="faq-answer">
-          <p>Weekly service starts from $109 per month depending on your pool size and condition. We'll give you an exact quote after a free assessment with no surprises and no hidden fees.</p>
-        </div>
+        <div class="faq-answer"><div class="faq-answer-inner"><p>Weekly service starts from $109 per month depending on your pool size and condition. We'll give you an exact quote after a free assessment with no surprises and no hidden fees.</p></div></div>
       </div>
     </div>
   </div>
