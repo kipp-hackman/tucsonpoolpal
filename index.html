@@ -608,26 +608,38 @@
       gap: 1rem;
     }
     .g2c-pool {
-      width: 130px;
-      height: 130px;
+      position: relative;
+      width: 200px;
+      height: 200px;
       border-radius: 16px;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      padding-bottom: 1rem;
-      font-weight: 700;
-      font-size: 0.9rem;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+      flex-shrink: 0;
     }
-    .g2c-green {
-      background: linear-gradient(135deg, #2d5a27 0%, #4a8c3f 50%, #6ab04c 100%);
-      color: rgba(255,255,255,0.8);
+    .g2c-pool img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
-    .g2c-blue {
-      background: linear-gradient(135deg, #0369a1 0%, #0ea5e9 50%, #38bdf8 100%);
+    .g2c-pool span {
+      position: absolute;
+      bottom: 0.6rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,0.55);
       color: white;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      backdrop-filter: blur(4px);
+      white-space: nowrap;
     }
-    .g2c-arrow { color: rgba(255,255,255,0.4); }
+    .g2c-pool.g2c-blue span { background: rgba(16,123,160,0.8); }
+    .g2c-arrow { color: rgba(255,255,255,0.5); flex-shrink: 0; }
     .g2c-note {
       color: rgba(255,255,255,0.45);
       font-size: 0.8rem;
@@ -639,9 +651,10 @@
       .g2c-inner { grid-template-columns: 1fr; gap: 3rem; }
       .g2c-visual { order: -1; }
       .g2c-section { padding: 4rem 1.5rem; }
+      .g2c-pool { width: 160px; height: 160px; }
     }
     @media (max-width: 480px) {
-      .g2c-pool { width: 110px; height: 110px; }
+      .g2c-pool { width: 130px; height: 130px; }
       .g2c-section { padding: 3rem 1rem; }
     }
 
@@ -1106,12 +1119,14 @@
     <div class="g2c-visual">
       <div class="g2c-badge-wrap">
         <div class="g2c-pool g2c-green">
+          <img src="./green-to-clean-before.jpeg" alt="Green algae-filled pool before treatment" loading="lazy" />
           <span>Before</span>
         </div>
         <div class="g2c-arrow">
           <svg width="36" height="36" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </div>
         <div class="g2c-pool g2c-blue">
+          <img src="./green-to-clean-after.jpeg" alt="Crystal clear pool after Green to Clean treatment" loading="lazy" />
           <span>After</span>
         </div>
       </div>
