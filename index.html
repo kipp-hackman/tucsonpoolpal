@@ -510,13 +510,13 @@
       width: 100%;
       max-width: 400px;
       margin: 0 auto;
-    }
-    .mobile-nav-close {
-      display: flex;
-      justify-content: flex-end;
-      padding-bottom: 0.25rem;
+      position: relative;
+      padding-top: 3rem;
     }
     .menu-close-btn {
+      position: absolute;
+      top: 0;
+      right: 0;
       background: none;
       border: none;
       cursor: pointer;
@@ -856,9 +856,7 @@
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
   <nav class="mobile-nav">
-    <div class="mobile-nav-close">
-      <button id="menuClose" class="menu-close-btn" aria-label="Close menu">&times;</button>
-    </div>
+    <button id="menuClose" class="menu-close-btn" aria-label="Close menu">&times;</button>
     <a href="#how-it-works" class="mobile-nav-link">How It Works</a>
     <a href="#services" class="mobile-nav-link">Services</a>
     <a href="#green-to-clean" class="mobile-nav-link">Green to Clean</a>
