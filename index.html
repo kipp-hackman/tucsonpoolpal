@@ -5,12 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Tucson Pool Pal – Locally owned pool cleaning, repairs, and water balancing in Tucson, AZ. Get a free quote today." />
   <title>Tucson Pool Pal – Friendly Local Pool Service</title>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="./favicon.png">
+  <link rel="preload" as="image" href="./hero.jpeg">
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Tucson Pool Pal – Friendly Local Pool Service" />
+  <meta property="og:description" content="Locally owned pool cleaning, repairs, and water balancing in Tucson, AZ. No contracts. Free quotes. Same-day response." />
+  <meta property="og:image" content="./hero.jpeg" />
+  <meta property="og:url" content="https://tucsonpoolpal.com" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800;900&display=swap" rel="stylesheet">
   <style>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800;900&display=swap" rel="stylesheet">
-
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
@@ -40,7 +46,6 @@
       border-bottom: none;
       box-shadow: 0 0 0 rgba(0,0,0,0);
       border-radius: 0px;
-      top: 0px;
       transition: background 0.6s ease, box-shadow 0.6s ease, backdrop-filter 0.6s ease, border-radius 0.6s ease, top 0.6s ease, padding 0.6s ease;
     }
     nav.scrolled {
@@ -89,7 +94,6 @@
       padding: 7rem clamp(2rem, 5vw, 5rem) 5rem;
       display: grid; grid-template-columns: 1fr 400px;
       gap: 4rem; align-items: center;
-      min-height: 85vh;
     }
     .hero-eyebrow {
       display: inline-flex; align-items: center; gap: 0.5rem;
@@ -362,8 +366,9 @@
     footer { background: var(--navy); color: rgba(255,255,255,0.5); padding: 3rem 2.5rem 2rem; text-align: center; }
     .footer-logo { display: flex; justify-content: center; margin-bottom: 0.75rem; }
     .footer-logo div { width: 200px; }
-    .footer-logo .path-9, .footer-logo .path-10, .footer-logo .path-15, .footer-logo .path-16 { fill: white !important; }
-    .footer-logo .path-12, .footer-logo .path-13, .footer-logo .path-14 { fill: rgba(255,255,255,0.6) !important; }
+    .footer-logo .st1 { fill: white !important; }
+    .footer-logo .st0 { fill: rgba(255,255,255,0.75) !important; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
     footer p { font-size: 0.88rem; margin-bottom: 1.5rem; line-height: 1.6; }
     .footer-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 2rem; font-size: 0.85rem; }
     .footer-links a { color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
@@ -444,7 +449,7 @@
       .hiw-num { width: 44px; height: 44px; font-size: 1rem; }
       .hiw-step h3 { font-size: 0.95rem; }
       .hiw-step p { font-size: 0.85rem; }
-      .services-grid { grid-template-columns: 1fr; max-width: 500px; margin-left: auto; margin-right: auto; }
+      .services-grid { max-width: 500px; margin-left: auto; margin-right: auto; }
       .service-card, .service-card.featured { grid-template-columns: 1fr !important; }
       .service-img { height: 180px; }
       .why-img-wrap img { height: 220px; }
@@ -673,9 +678,6 @@
     }
 
 
-    @media (max-width: 700px) {
-      .services-grid { grid-template-columns: 1fr !important; }
-    }
 
     .service-card.featured {
       grid-template-columns: 300px 1fr;
@@ -742,7 +744,7 @@
       border-top: 0px solid #e2e8f0;
     }
     .faq-answer.open {
-      max-height: 300px;
+      max-height: 600px;
       border-top: 1px solid #e2e8f0;
     }
     .faq-answer-inner { padding: 1rem 1.5rem 1.4rem; }
@@ -912,8 +914,20 @@
       <h3>Get a Free Quote</h3>
       <p class="hero-form-sub">We'll get back to you same day.</p>
       <form id="heroForm" action="https://formspree.io/f/xeenzapk" method="POST">
-        <div class="hfg"><input type="text" name="name" placeholder="Your Name" required /></div>
-        <div class="hfg"><input type="tel" name="phone" placeholder="Phone Number" required /></div>
+        <div class="hfg"><label for="hero-name" class="sr-only">Your Name</label><input id="hero-name" type="text" name="name" placeholder="Your Name" required autocomplete="name" /></div>
+        <div class="hfg"><label for="hero-phone" class="sr-only">Phone Number</label><input id="hero-phone" type="tel" name="phone" placeholder="Phone Number" required autocomplete="tel" /></div>
+        <div class="hfg"><label for="hero-email" class="sr-only">Email Address</label><input id="hero-email" type="email" name="email" placeholder="Email Address (optional)" autocomplete="email" /></div>
+        <div class="hfg">
+          <label for="hero-service" class="sr-only">Service needed</label>
+          <select id="hero-service" name="service">
+            <option value="" disabled selected>- What do you need? -</option>
+            <option>Weekly Cleaning</option>
+            <option>Equipment Repair</option>
+            <option>Water Testing &amp; Balancing</option>
+            <option>Green to Clean</option>
+            <option>Other / Not Sure</option>
+          </select>
+        </div>
         <button type="submit" class="btn-hero">Get My Free Quote &rarr;</button>
         <p class="form-note">No contracts and no obligation. We'll call you back the same day.</p>
         <div class="hf-success" id="heroSuccess">&#10003; Thanks! We'll be in touch today.</div>
@@ -1043,7 +1057,7 @@
       </div>
     </div>
 
-  </div></div>
+  </div>
 </section>
 
 <!-- WHY US -->
@@ -1188,13 +1202,14 @@
         </div>
       </div>
       <div class="contact-form-card">
-        <div class="contact-form-title">Get a Free Quote</div>
+        <h3 class="contact-form-title">Get a Free Quote</h3>
         <p style="color:var(--muted);font-size:0.9rem;margin-bottom:1.5rem;margin-top:-0.5rem;">We'll call you back the same day. No obligation, no pressure.</p>
         <form id="contactForm" action="https://formspree.io/f/xeenzapk" method="POST">
-          <div class="form-group"><label>First Name <span class="req">*</span></label><input type="text" name="firstName" placeholder="Your first name" required /></div>
-          <div class="form-group"><label>Phone Number <span class="req">*</span></label><input type="tel" name="phone" placeholder="+1 (520) 000-0000" required /></div>
-          <div class="form-group"><label>What can we help with?</label>
-            <select name="service">
+          <div class="form-group"><label for="contact-name">First Name <span class="req">*</span></label><input id="contact-name" type="text" name="firstName" placeholder="Your first name" required autocomplete="given-name" /></div>
+          <div class="form-group"><label for="contact-phone">Phone Number <span class="req">*</span></label><input id="contact-phone" type="tel" name="phone" placeholder="+1 (520) 000-0000" required autocomplete="tel" /></div>
+          <div class="form-group"><label for="contact-email">Email Address</label><input id="contact-email" type="email" name="email" placeholder="you@example.com" autocomplete="email" /></div>
+          <div class="form-group"><label for="contact-service">What can we help with?</label>
+            <select id="contact-service" name="service">
               <option value="" disabled selected>- Choose a service -</option>
               <option>Weekly Cleaning</option>
               <option>Equipment Repair</option>
@@ -1222,42 +1237,42 @@
     </div>
     <div class="faq-grid">
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
+        <button type="button" class="faq-question" onclick="toggleFaq(this)">
           Do I need to be home during the visit?
           <svg class="faq-icon" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
         <div class="faq-answer"><div class="faq-answer-inner"><p>Nope! Most of our customers aren't home when we visit. As long as we have access to your pool area, we'll take care of everything and leave a service note so you always know what was done.</p></div></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
+        <button type="button" class="faq-question" onclick="toggleFaq(this)">
           How often do you come?
           <svg class="faq-icon" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
         <div class="faq-answer"><div class="faq-answer-inner"><p>Our standard service is weekly, which is what we recommend for Tucson's climate. The heat and dust mean your pool needs consistent attention to stay clean and properly balanced.</p></div></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
+        <button type="button" class="faq-question" onclick="toggleFaq(this)">
           What's included in weekly service?
           <svg class="faq-icon" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
         <div class="faq-answer"><div class="faq-answer-inner"><p>Every weekly visit includes skimming, vacuuming, brushing walls and steps, emptying baskets, and testing and balancing your water chemistry. We also do a visual check of your equipment and let you know if anything needs attention.</p></div></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
+        <button type="button" class="faq-question" onclick="toggleFaq(this)">
           Do you require a contract?
           <svg class="faq-icon" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
         <div class="faq-answer"><div class="faq-answer-inner"><p>No contracts, ever. We believe in earning your business every single week. If you're not happy with the service you can cancel anytime with no fees and no hassle.</p></div></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
+        <button type="button" class="faq-question" onclick="toggleFaq(this)">
           How quickly can you start?
           <svg class="faq-icon" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
         <div class="faq-answer"><div class="faq-answer-inner"><p>Usually within the same week! Get in touch today and we'll assess your pool, give you a free quote, and get you on the schedule as quickly as possible.</p></div></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
+        <button type="button" class="faq-question" onclick="toggleFaq(this)">
           How much does it cost?
           <svg class="faq-icon" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
@@ -1286,7 +1301,7 @@
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo"><div><svg id="Layer_1" style="width:100%;display:block;" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 751.79 297.44">
+  <div class="footer-logo"><div><svg id="footer-logo" style="width:100%;display:block;" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 751.79 297.44">
   <!-- Generator: Adobe Illustrator 30.2.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 1)  -->
   <defs>
     <style>
@@ -1336,11 +1351,11 @@
     <a href="terms.html">Terms of Service</a>
   </div>
   <div class="footer-social">
-    <a href="https://www.linkedin.com/in/kevin-bray-191372163" target="_blank" rel="noopener" aria-label="LinkedIn">
+    <a href="https://www.linkedin.com/in/kevin-bray-191372163" target="_blank" rel="noopener" aria-label="Tucson Pool Pal on LinkedIn">
       <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
       LinkedIn
     </a>
-    <a href="https://www.facebook.com/tucsonpoolpal" target="_blank" rel="noopener" aria-label="Facebook">
+    <a href="https://www.facebook.com/tucsonpoolpal" target="_blank" rel="noopener" aria-label="Tucson Pool Pal on Facebook">
       <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
       Facebook
     </a>
@@ -1390,20 +1405,47 @@
   const menuClose = document.getElementById('menuClose');
   const mobileLinks = document.querySelectorAll('.mobile-nav-link, .mobile-nav-cta, .mobile-nav-phone');
 
+  mobileMenu.setAttribute('role', 'dialog');
+  mobileMenu.setAttribute('aria-modal', 'true');
+  mobileMenu.setAttribute('aria-label', 'Navigation menu');
+
+  function getFocusable() {
+    return Array.from(mobileMenu.querySelectorAll('a, button, [tabindex]:not([tabindex="-1"])'));
+  }
+
+  function trapFocus(e) {
+    const focusable = getFocusable();
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (e.key === 'Tab') {
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+    if (e.key === 'Escape') closeMenu();
+  }
+
   function openMenu() {
     mobileMenu.style.display = 'flex';
-    setTimeout(() => mobileMenu.classList.add('open'), 10);
+    setTimeout(() => { mobileMenu.classList.add('open'); getFocusable()[0]?.focus(); }, 10);
     hamburger.classList.add('open');
+    hamburger.setAttribute('aria-expanded', 'true');
+    hamburger.setAttribute('aria-label', 'Close menu');
     document.body.style.overflow = 'hidden';
+    mobileMenu.addEventListener('keydown', trapFocus);
   }
 
   function closeMenu() {
     mobileMenu.classList.remove('open');
     hamburger.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    hamburger.setAttribute('aria-label', 'Open menu');
     document.body.style.overflow = '';
+    mobileMenu.removeEventListener('keydown', trapFocus);
     setTimeout(() => mobileMenu.style.display = 'none', 300);
+    hamburger.focus();
   }
 
+  hamburger.setAttribute('aria-expanded', 'false');
   hamburger.addEventListener('click', openMenu);
   menuClose.addEventListener('click', closeMenu);
   mobileLinks.forEach(link => link.addEventListener('click', closeMenu));
