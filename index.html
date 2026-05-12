@@ -128,7 +128,8 @@
     .hero-form-card {
       background: rgba(5,39,51,0.92); backdrop-filter: blur(16px);
       border: 1px solid rgba(255,255,255,0.12); border-radius: 16px;
-      padding: 2.2rem;
+      padding: 2.2rem; box-sizing: border-box; overflow: hidden;
+      margin-right: 1rem;
     }
     .hero-form-card h3 {
       font-family: 'Plus Jakarta Sans', sans-serif; font-style: normal;
@@ -137,7 +138,7 @@
     .hero-form-sub { color: rgba(255,255,255,0.5); font-size: 0.85rem; margin-bottom: 1.4rem; }
     .hfg { margin-bottom: 0.85rem; }
     .hfg input, .hfg select {
-      width: 100%; border: 1.5px solid rgba(255,255,255,0.15); border-radius: 8px;
+      width: 100%; box-sizing: border-box; border: 1.5px solid rgba(255,255,255,0.15); border-radius: 8px;
       padding: 0.85rem 1rem; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.95rem;
       color: white; background: rgba(255,255,255,0.08); outline: none;
       transition: border-color 0.2s;
@@ -433,7 +434,7 @@
       .hero-urgency { display: none; }
       .hero-trust-item { font-size: 0.78rem; }
       .hero-phone-link { font-size: 1rem; }
-      .hero-form-card { padding: 1.5rem 1.2rem; width: 100%; box-sizing: border-box; overflow: hidden; }
+      .hero-form-card { padding: 1.5rem 1.2rem; width: 100%; box-sizing: border-box; overflow: hidden; margin-right: 0; }
       .hero-form-card h3 { font-size: 1.2rem; }
       .btn-hero { font-size: 0.9rem; padding: 0.85rem; }
       section { padding: 3rem 1rem; }
