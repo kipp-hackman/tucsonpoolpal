@@ -498,14 +498,13 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 5rem 2rem 3rem;
+      padding: 0;
       opacity: 0;
       transition: opacity 0.3s;
-      text-align: center;
     }
     .menu-close-btn {
       position: absolute;
-      top: 1.1rem;
+      top: 1rem;
       right: 1.25rem;
       background: none;
       border: none;
@@ -521,8 +520,7 @@
       flex-direction: column;
       align-items: center;
       gap: 0;
-      width: 100%;
-      max-width: 400px;
+      width: min(400px, calc(100vw - 4rem));
     }
     .mobile-nav-link {
       color: var(--navy);
