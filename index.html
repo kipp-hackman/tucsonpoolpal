@@ -81,10 +81,14 @@
     }
     .nav-logo { display: flex; align-items: center; text-decoration: none; }
     .nav-logo div { width: 180px; }
+    /* Logo legibility on the dark hero (transparent nav state) */
+    .nav-logo .st0, .nav-logo .st1 { transition: fill 0.4s ease; }
+    nav:not(.scrolled) .nav-logo .st1 { fill: white !important; }
+    nav:not(.scrolled) .nav-logo .st0 { fill: rgba(255,255,255,0.78) !important; }
     .nav-links { display: flex; gap: 2rem; align-items: center; }
     .nav-links a { color: rgba(255,255,255,0.9); text-decoration: none; font-size: 1rem; transition: color 0.3s; }
     nav.scrolled .nav-links a { color: var(--navy); }
-    .nav-links a:hover { color: var(--blue-bright); }
+    .nav-links a:hover { color: var(--gold-deep); }
     nav.scrolled .nav-links a:hover { color: var(--blue); }
     .nav-cta {
       background: var(--blue-bright) !important; color: white !important;
@@ -107,8 +111,8 @@
     .hero-overlay {
       position: absolute; inset: 0;
       background:
-        linear-gradient(135deg, rgba(14, 165, 233, 0.28) 0%, rgba(14, 165, 233, 0.10) 45%, rgba(255, 255, 255, 0.05) 100%),
-        linear-gradient(180deg, rgba(10, 37, 64, 0.18) 0%, rgba(10, 37, 64, 0.32) 100%);
+        linear-gradient(135deg, rgba(14, 165, 233, 0.22) 0%, rgba(14, 165, 233, 0.08) 45%, rgba(255, 255, 255, 0.03) 100%),
+        linear-gradient(180deg, rgba(10, 37, 64, 0.40) 0%, rgba(10, 37, 64, 0.60) 100%);
     }
     .hero-inner {
       position: relative; z-index: 2; flex: 1;
@@ -143,7 +147,7 @@
       color: white; text-decoration: none; font-size: 1.1rem; font-weight: 600;
       transition: color 0.2s;
     }
-    .hero-phone-link:hover { color: var(--blue-bright); }
+    .hero-phone-link:hover { color: var(--gold-deep); }
 
     /* ── HERO FORM ── */
     .hero-form-card {
